@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @book.title %>
+</p>
+
+<p>
+  <strong>Isbn:</strong>
+  <%= @book.isbn %>
+</p>
+
+<p>
+  <% if @book.fotos.attached? %>
+    <% @book.fotos.each do |foto| %>
+      <%= image_tag foto.variant(resize:'300x300', rotate:'90') %>
+    <% end %>
+  <% end %>
+</p>
+
+<%= link_to 'Edit', edit_book_path(@book) %> |
+<%= link_to 'Back', books_path %>
