@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_19_115946) do
+ActiveRecord::Schema.define(version: 2019_02_19_161009) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,27 +43,13 @@ ActiveRecord::Schema.define(version: 2019_02_19_115946) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "libros", force: :cascade do |t|
-    t.string "titulo"
-    t.string "isbn"
+  create_table "borrows", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "book_id"
+    t.integer "owner"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "personas", force: :cascade do |t|
-    t.string "nombre"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "prestamos", force: :cascade do |t|
-    t.bigint "persona_id"
-    t.bigint "libro_id"
-    t.string "prestador"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["libro_id"], name: "index_prestamos_on_libro_id"
-    t.index ["persona_id"], name: "index_prestamos_on_persona_id"
+    t.index ["user_id", "book_id"], name: "index_borrows_on_user_id_and_book_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -73,6 +59,4 @@ ActiveRecord::Schema.define(version: 2019_02_19_115946) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "prestamos", "libros"
-  add_foreign_key "prestamos", "personas"
 end
