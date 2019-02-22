@@ -5,7 +5,7 @@ Vers. m2
 
 ## ISBN numbers
 
-REference and search ISBN numbers through the [ISBN db API](https://github.com/sethvargo/isbndb)
+Reference and search ISBN numbers through the [ISBN db API](https://github.com/sethvargo/isbndb)
 
 ## References
 
